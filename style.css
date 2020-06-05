@@ -1,5 +1,7 @@
 
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Muli&display=swap');
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,9 +11,393 @@
 body {
     background: #4a5b86;
 }
+.menu1 {
+    display: none;
+}
+/* HAMBURGER MENU */
 
-main {
+.menu-wrap {
+    position: fixed;
+    top: 0;
+    right: 50px;
+    z-index: 1;
+}
+.menu-wrap .toggler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+}
+.menu-wrap .hamburger {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    padding: 1rem;
+    background: rgb(4, 42, 79, .01);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hamburger Line */
+.menu-wrap .hamburger > div {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    width: 100%;
+    height: 2px;
+    background: inherit;
+}
+.menu-wrap .hamburger > div:after{
+    top: 5px;
+}
+.menu-wrap .toggler:checked + .hamburger > div {
+    transform: rotate(135deg);
+}
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+    top: 0;
+    transform: rotate(90deg);
+}
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+    transform: rotate(225deg);
+}
+.menu-wrap .toggler:checked ~ .menu {
+    visibility: visible;
+}
+.menu-wrap .toggler:checked ~ .menu > div {
+    transform: scale(1);
+}
+.menu-wrap .toggler:checked ~ .menu > div > div {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+.menu-wrap .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-wrap .menu > div {
+    background: rgb(14, 17, 24, .85);
+    border-radius: 10px;
+    width: 60vw;
+    height: 60vh;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.4s ease;
+}
+.menu-wrap .menu > div > div {
+    text-align: center;
+    max-width: 50vw;
+    max-height: 100vh;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    cursor: pointer;
+}
+.menu-wrap .menu > div > div > ul > li {
+    list-style: none;
+    color: #fff;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    padding: 1rem;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.menu-wrap .menu > div > div > ul > li:hover {
+    font-size: .85rem;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
+/* BODY CONTENT */
+
+.content {
     max-width: 800px;
+    height: auto;
+    margin: auto;
+}
+.contentBox {
+    width: 90%;
     height: 100vh;
-    border: 2px solid black;
+    margin: auto;
+    background-image: url(img/next-bg.jpeg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.logo-text {
+    color: #fff;
+    font-size: 1.7rem;
+    margin: 10px auto;
+    width: fit-content;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+.text-content {
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInLeft 3s 1;
+}
+@keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+.exe,
+.not {
+    color: #fff;
+    font-size: 2.1rem;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+}
+.sti {
+    color: #05103d;
+    text-shadow: rgb(12, 23, 68, 10);
+}
+.ann {
+    color: #f5ae55;
+    text-shadow: rgb(228, 178, 129, 10);
+}
+.smallText {
+    margin: 30px 0;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .8rem;
+    line-height: 2;
+    text-align: center;
+}
+.btns {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    justify-content: center;
+}
+.signup,
+.login {
+    padding: 10px 35px;
+    border: 2px solid #080e3a;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: .9rem;
+    margin-right: 20px;
+}
+.signup a,
+.login a {
+    color: #fff;
+    text-decoration: none;
+}
+.signup:hover,
+.login:hover {
+    background-color: #080e3a;
+    transition: ease-in 1s;
+    cursor: pointer;
+}
+.footer {
+    margin-top: -10%;
+}
+.footer ul {
+    width: 40%;
+    margin: 10px auto 30px;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: baseline;
+    list-style: none;
+}
+.footer ul li {
+    font-family: 'Montserrat', sans-serif;
+}
+.fa-facebook-square,
+.fa-twitter-square,
+.fa-dribbble-square {
+    font-size: 1.1rem;
+}
+
+
+
+/* MEDIA QUERRIES */
+
+@media (min-width: 1024px) {
+    
+    body {
+        background: #4a5b86;
+    }
+    .menu1 {
+        display: block;
+    }
+    .menu-wrap,
+    .toggler,
+    .hamburger {
+        display: none;
+    }
+    .heading {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: "a b";
+    }
+    .logo-text {
+        grid-area: a;
+        margin-left: 50px;
+        padding: 30px 0 0 20px;
+        font-size: 1.5rem;
+    }
+    .menu1 {
+        grid-area: b;
+        margin: 10px;
+        padding: 20px;
+        color: #fff;
+    }
+    .menu1 ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+        list-style: none;
+    }
+    .menu1 ul li {
+        padding: 8px 25px;
+        border-radius: 20px;
+    }
+    .menu1 ul li:hover {
+        color: #f5ae55;
+        border: 1px solid #f5ae55;
+        background-color: rgba(255, 254, 254, 0.1);
+        cursor: pointer;
+        transition: ease-in 1s;
+    }
+    /* BODY CONTENT */
+    
+    .content {
+        max-width: 90%;
+        height: auto;
+        margin:  50px auto;
+    }
+    .contentBox {
+        width: 90%;
+        height: 85vh;
+        margin: auto;
+        background-image: url(img/next-bg.jpeg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    .text-container {
+        width: 93%;
+        height: 20vh;
+        margin: 30px 0 0 0;
+        border-right: 2px solid #fff;
+    }
+    .text-container2 {
+        width: 93%;
+        height: 20vh;
+        margin: 0 0 -30px 0;
+        border-right: 2px solid #fff;
+    }
+    .smallText {
+        width: 55%;
+        text-align: start;
+        margin: 30px 0 0 50px;
+        padding: 10px 20px;
+    }
+    .text-content {
+        width: 70%;
+        height: 25vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 50px;
+        padding: 20px;
+    }
+    .exe,
+    .not {
+        font-size: 3.1rem;
+    }
+    .btns {
+        margin-left: 50px;
+        padding-left: 20px;
+        justify-content: start;
+    }
+    .signup a,
+    .login a {
+        color: #fff;
+        text-decoration: none;
+    }
+    .signup:hover,
+    .login:hover {
+        background-color: rgb(8, 14, 58, 0.85);
+        transition: ease-in 1s;
+        cursor: pointer;
+    }
+    .footer {
+        margin-left: 50px;
+        margin-top: -30px;
+    }
+    .footer ul {
+        width: 85%;
+        margin: 0 auto 30px;
+        color: #fff;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        list-style: none;
+    }
+    .footer ul li {
+        font-family: 'Montserrat', sans-serif;
+        padding-right: 30px;
+    }
+    .fa-facebook-square {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+    .fa-twitter-square {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+    .fa-dribbble-square {
+        font-size: 1.1rem;
+        color: #fff;
+    }
+    
 }
